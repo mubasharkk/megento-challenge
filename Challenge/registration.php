@@ -2,4 +2,5 @@
 
 use \Magento\Framework\Component\ComponentRegistrar;
 
-ComponentRegistrar::register(ComponentRegistrar::MODULE, 'BettenReise_challenge', __DIR__);
+// Registring Module to Magento
+ComponentRegistrar::register(ComponentRegistrar::MODULE, 'BettenReise_Challenge', __DIR__);
