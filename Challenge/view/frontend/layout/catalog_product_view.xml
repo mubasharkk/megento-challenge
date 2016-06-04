@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <body>
-    <referenceContainer name="header.panel">
+    <referenceContainer name="product.info.main">
         <block class="BettenReise\Challenge\Block\Product\View\Suggest"
             name="product.view.suggest"
             template="BettenReise_Challenge::product/view/suggest.phtml"
