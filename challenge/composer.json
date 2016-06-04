@@ -1,0 +1,38 @@
+{
+    "name": "BettenReise/Challenge",
+    "description": "A module as a challenge from BetterReise.de",
+    "keywords": ["json", "challenge", "suggest"],
+    "homepage": "https://github.com/mubasharkk/megento-challenge.git",
+    "type": "module",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Mubashar Khokhar",
+            "email": "m.khokhar@social-gizmo.com"
+        }
+    ],
+    "repositories": [{
+        "type": "package",
+        "package": {
+            "name": "json-schema/JSON-Schema-Test-Suite",
+            "version": "0.1.0",
+            "source": {
+                "url": "https://github.com/json-schema/JSON-Schema-Test-Suite",
+                "type": "git",
+                "reference": "1.1.0"
+            }
+        }
+    }],
+    "require": {
+        "php": ">=5.3.29"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+    },
+    "autoload-dev": {
+    },
+    "bin": ["bin"],
+    "extra": {
+    }
+}
