@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
 
 <body>
-    <referenceContainer name="product.info.suggest">
+    <referenceContainer name="header.panel">
         <block class="BettenReise\Challenge\Block\Product\View\Suggest"
             name="product.view.suggest"
-            template="Betten_Reise::product/view/suggest.phtml"
+            template="BettenReise_Challenge::product/view/suggest.phtml"
             after="-">
         </block>
     </referenceContainer>

@@ -2,7 +2,7 @@
 
 namespace BettenReise\Challenge\Block\Product\View;
 
-use \Magento\Framework\View\Element\Template;
+use Magento\Catalog\Block\Product\AbstractProduct;
 
 /**
  * Description of Suggest
@@ -10,11 +10,12 @@ use \Magento\Framework\View\Element\Template;
  * @author mubasharkk
  */
 
-class Suggest extends Template {
-  
-    public function getTitle(){
-	  
-        return "Foo Bar Baz";
-    }
-  
+
+class Suggest extends AbstractProduct {
+
+  public function getSomething() {
+	
+	return "Foo Bar Baz";
+  }
+
 }
