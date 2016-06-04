@@ -1,10 +1,13 @@
 {
     "name": "BettenReise/Challenge",
     "description": "A module as a challenge from BetterReise.de",
-    "keywords": ["json", "challenge", "suggest"],
+    "keywords": ["block", "challenge", "suggest"],
     "homepage": "https://github.com/mubasharkk/megento-challenge.git",
-    "type": "module",
-    "license": "BSD-3-Clause",
+    "type": "magento2-module",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"        
+    ],
     "authors": [
         {
             "name": "Mubashar Khokhar",
@@ -24,7 +27,7 @@
         }
     }],
     "require": {
-        "php": ">=5.3.29"
+        "php": ">=5.5.0"
     },
     "require-dev": {
     },
