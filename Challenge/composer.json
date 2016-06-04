@@ -29,6 +29,8 @@
     "require-dev": {
     },
     "autoload": {
+        "psr-4": { "BettenReise\\Challenge\\": "" },
+        "files": [ "registration.php" ]        
     },
     "autoload-dev": {
     },
