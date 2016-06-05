@@ -14,8 +14,12 @@ use Magento\Catalog\Block\Product\AbstractProduct;
 class Suggest extends AbstractProduct {
 
   public function getSomething() {
+
+	$product = $this->getProduct();
 	
-	return "Foo Bar Baz";
+	print_r ($product->getCategoryIds());
+	
+	return $product->getSku();
   }
 
 }
