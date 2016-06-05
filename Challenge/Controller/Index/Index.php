@@ -27,7 +27,8 @@ class Index extends Action {
   }
 
   /**
-   * Default customer account page
+   * View Display rules db enteries 
+   * challenge/index/index
    *
    * @return void
    */
