@@ -11,6 +11,9 @@ use Magento\Framework\Model\AbstractModel;
  */
 class DisplayRules extends AbstractModel {
 
+  /**
+     * Define resource model
+     */
   protected function _construct() {
 	
 	$this->_init('BettenReise\Challenge\Model\Resource\DisplayRules');

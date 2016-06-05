@@ -1,19 +1,22 @@
 <?php
 
-namespace BettenReise\Challenge;
+namespace BettenReise\Challenge\Model\Resource;
 
-use Magento\Framework\Model\AbstractModel;
+use Magento\Framework\Model\Resource\Db\AbstractDb;
 
 /**
  * Description of DisplayRules
  *
  * @author mubasharkk
  */
-class DisplayRules extends AbstractModel {
+class DisplayRules extends AbstractDb {
 
+  /**
+     * Define main table
+     */
   protected function _construct() {
 	
-	$this->_init('BettenReise\Challenge\Model\Resource\DisplayRules');
+	$this->_init('bettenreise_challenge', 'id');
   }
 
 }
