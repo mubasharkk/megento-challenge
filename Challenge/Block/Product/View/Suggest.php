@@ -2,7 +2,9 @@
 
 namespace BettenReise\Challenge\Block\Product\View;
 
-use Magento\Framework\View\Element\Template;
+use \Magento\Framework\View\Element\Template;
+use \Magento\Framework\App\ObjectManager;
+use \Magento\Backend\Block\Template\Context;
 
 /**
  * Description of Suggest
@@ -14,22 +16,27 @@ class Suggest extends Template {
     protected $_coreRegistry = null;
     protected $connection;
     protected $_resource;
+	
+	protected $_objectManager;
 
-    public function __construct(
-        \Magento\Backend\Block\Template\Context $context,
-        array $data = []
-    ) {
-        parent::__construct($context, $data);
+    public function __construct(Context $context, array $data = []) {
+	  
+	  $this->_objectManager = ObjectManager::getInstance();	  
+	  parent::__construct($context, $data);
+	  	  
     }
 
 
   public function getSomething() {
 
-//	$product = $this->_coreRegistry->registry('product');
-//
-//	print_r($product->getCategoryIds());
-//
-//	return $product->getSku();
+	$product = $this->_objectManager->get('Magento\Framework\Registry')->registry('current_product');
+
+	$data['name'] = $product->getName();
+	$data['categories'] = $product->getCategoryIds();
+	$data['sku'] = $product->getSku();
+	
+
+	print_r($data);
 	
 	
   }
