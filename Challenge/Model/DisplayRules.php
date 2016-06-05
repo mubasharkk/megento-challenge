@@ -1,6 +1,6 @@
 <?php
 
-namespace BettenReise\Challenge;
+namespace BettenReise\Challenge\Model;
 
 use Magento\Framework\Model\AbstractModel;
 

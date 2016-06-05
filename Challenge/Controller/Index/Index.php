@@ -2,25 +2,28 @@
 
 namespace BettenReise\Challenge\Controller\Index;
 
-use \Magento\Framework\App\Action\Action;
+use Magento\Framework\App\Action\Action;
+use Magento\Framework\App\Action\Context;
+
+use BettenReise\Challenge\Model\DisplayRulesFactory;
  
 class Index extends Action
 {
         /**
          * @var \Magento\Framework\View\Result\PageFactory
          */
-        protected $resultPageFactory;
+        protected $modelRulesFactory;
 
         /**
          * @param \Magento\Framework\App\Action\Context $context
-         * @param \Magento\Framework\View\Result\PageFactory resultPageFactory
+         * @param BettenReise\Challenge\Model\DisplayRulesFactor $modelRulesFactory
          */
         public function __construct(
-            \Magento\Framework\App\Action\Context $context,
-            \Magento\Framework\View\Result\PageFactory $resultPageFactory
+            Context $context,
+            DisplayRulesFactory $modelRulesFactory
         )
         {
-            $this->resultPageFactory = $resultPageFactory;
+            $this->modelRulesFactory = $modelRulesFactory;
             parent::__construct($context);
         }
     /**
@@ -30,6 +33,9 @@ class Index extends Action
      */
     public function execute()
     {
-	  return $this->resultPageFactory->create();
+//	  $rulesModel = $this->modelRulesFactory->create();
+//	  $item = $rulesModel->load(1);
+//        var_dump($item->getData());
+//	  return $this->resultPageFactory->create();
     }
 }

@@ -2,7 +2,7 @@
 
 namespace BettenReise\Challenge\Model\Resource;
 
-use Magento\Framework\Model\Resource\Db\AbstractDb;
+use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
 /**
  * Description of DisplayRules
