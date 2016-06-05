@@ -59,9 +59,17 @@ class InstallSchema implements InstallSchemaInterface
 				// Content to be rendered
                 ->addColumn(
                     'content',
+                    Table::TYPE_BLOB,
+                    null,
+                    ['nullable' => true, 'default' => ''],
+                    'Description'
+                )
+				// PHTML Path to render
+                ->addColumn(
+                    'phtml_path',
                     Table::TYPE_TEXT,
                     null,
-                    ['nullable' => false, 'default' => ''],
+                    ['nullable' => true, 'default' => ''],
                     'Description'
                 )
 				// status : Enabled(1) or Disabled (0)
@@ -80,7 +88,7 @@ class InstallSchema implements InstallSchemaInterface
                     ['nullable' => false],
                     'Created At'
                 )
-                ->setComment('News Table')
+                ->setComment('Table for managing BetterReise Challenge rules')
                 ->setOption('type', 'InnoDB')
                 ->setOption('charset', 'utf8');
             $installer->getConnection()->createTable($table);
