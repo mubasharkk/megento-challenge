@@ -15,13 +15,13 @@ use Magento\Framework\DB\Ddl\Table;
 
 class InstallSchema implements InstallSchemaInterface
 {
-    public function install(SchemaSetupInterface $setup, ModuleContextInterface $context)
-    {
+    public function install(SchemaSetupInterface $setup, ModuleContextInterface $context){
+	  	  
         $installer = $setup;
         $installer->startSetup();
  
         // Get bettenreise_challenge table
-        $tableName = $installer->getTable('bettenreise_challenge_rules');
+        $tableName = $installer->getTable('bettenreise_challenge');
         // Check if the table already exists
         if ($installer->getConnection()->isTableExists($tableName) != true) {
             // Create tutorial_simplenews table
@@ -95,6 +95,11 @@ class InstallSchema implements InstallSchemaInterface
         }
  
         $installer->endSetup();
+    }
+	
+	
+    public function upgrade(SchemaSetupInterface $installer, ModuleContextInterface $context){
+	  
     }
 }
  
