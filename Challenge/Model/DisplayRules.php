@@ -9,6 +9,11 @@ use Magento\Framework\Model\AbstractModel;
  *
  * @author mubasharkk
  */
-class DisplayRules extends AbstractModel{
-  //put your code here
+class DisplayRules extends AbstractModel {
+
+  protected function _construct() {
+	
+	$this->_init('BettenReise\Challenge\Model\Resource\DisplayRules');
+  }
+
 }
