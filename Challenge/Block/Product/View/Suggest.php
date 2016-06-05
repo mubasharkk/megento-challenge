@@ -6,39 +6,82 @@ use \Magento\Framework\View\Element\Template;
 use \Magento\Framework\App\ObjectManager;
 use \Magento\Backend\Block\Template\Context;
 
+use BettenReise\Challenge\Model\DisplayRulesFactory;
+
 /**
  * Description of Suggest
  *
  * @author mubasharkk
  */
 class Suggest extends Template {
+
+  protected $_objectManager;
+  protected $_modelRulesFactory;
+  protected $_collectionFactory;
+  protected $_currentProduct;
+
+  public function __construct(Context $context, array $data = []) {
+
+	$this->_objectManager = ObjectManager::getInstance();
+
+	$this->_modelRulesFactory = $this->_objectManager->create('BettenReise\Challenge\Model\DisplayRulesFactory');
+	
+	$this->_currentProduct = $this->_objectManager->get('Magento\Framework\Registry')->registry('current_product');
+
+	parent::__construct($context, $data);
+  }
+
+  private function getSKURules($sku) {
+	
+	$rulesCollection = $this->_modelRulesFactory->create()->getCollection();
+	$results = $rulesCollection
+			->addFieldToFilter('rule_type', array('eq' => 'sku'))
+			->addFieldToFilter('rule_id', array('eq' => $sku))
+			->addFieldToFilter('status', array('eq' => 1))
+			->load();
+	
+	return $results->getData();
+  }
+
+  private function getCategoriesRules(array $categories){
+	$rulesCollection = $this->_modelRulesFactory->create()->getCollection();
+	$results = $rulesCollection
+			->addFieldToFilter('rule_type', array('eq' => 'category'))
+			->addFieldToFilter('rule_id', array('in' => $categories))
+			->addFieldToFilter('status', array('eq' => 1))
+			->load();
+	
+	return $results->getData();
+
+  }
   
-    protected $_coreRegistry = null;
-    protected $connection;
-    protected $_resource;
+  function preRender(){
 	
-	protected $_objectManager;
+	$sku = $this->_currentProduct->getSku();
+	
+	$categories = $this->_currentProduct->getCategoryIds();
 
-    public function __construct(Context $context, array $data = []) {
+	$sku_rules = $this->getSKURules($sku);
+	$cat_rules = $this->getCategoriesRules($categories);
+	
+	return array_merge($sku_rules, $cat_rules);
+	
+  }
+
+  public function render() {
+
+	$rules = $this->preRender();
+
+	foreach($rules as $rule){
+	  if(!empty($rule['content'])){
+		print '<div class="challenge-rule rule-'.$rule['id'].'">'.$rule['content'].'</div>';
+	  }
 	  
-	  $this->_objectManager = ObjectManager::getInstance();	  
-	  parent::__construct($context, $data);
-	  	  
-    }
-
-
-  public function getSomething() {
-
-	$product = $this->_objectManager->get('Magento\Framework\Registry')->registry('current_product');
-
-	$data['name'] = $product->getName();
-	$data['categories'] = $product->getCategoryIds();
-	$data['sku'] = $product->getSku();
-	
-
-	print_r($data);
-	
-	
+	  if(!empty($rule['phtml_path'] && file_exists($this->getTemplateFile($rule['phtml_path']))) ){
+		include ($this->getTemplateFile($rule['phtml_path']));		
+	  }
+	  
+	}
   }
 
 }
